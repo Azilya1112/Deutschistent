@@ -27,6 +27,7 @@ public class User {
     @JoinColumn
     Image image;
 
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id") // Внешний ключ для документов
     private List<Document> documents = new ArrayList<>();

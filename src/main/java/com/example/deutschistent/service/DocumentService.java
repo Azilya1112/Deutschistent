@@ -1,5 +1,12 @@
 package com.example.deutschistent.service;
 
+import com.example.deutschistent.entity.Document;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface DocumentService {
+
 
 import com.example.deutschistent.entity.Document;
 
@@ -10,9 +17,8 @@ public interface DocumentService {
 
     List<Document> getAll();
 
-    Document findById(Long id);
+   Document findById(Long id);
 
-    void deleteById(Long id);
-
+   void deleteById(Long id);
 
 }

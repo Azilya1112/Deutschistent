@@ -52,6 +52,7 @@ public class DocumentController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
     @PostMapping("/{userId}/documents/upload")
     public ResponseEntity<String> uploadDocument(@PathVariable Long userId, @RequestParam("file") MultipartFile file) {
         try {
