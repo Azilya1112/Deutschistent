@@ -21,14 +21,4 @@ public class SwaggerConfig {
                 .info(new Info().title("Deutschistent"))
                 .security(Collections.singletonList(new SecurityRequirement().addList(KEY_API)));
     }
-
-
-    public SecurityScheme apiKeySecuritySchema() {
-        return new SecurityScheme()
-                .name("Bearer token")
-                .description("Please put the token!")
-                .in(SecurityScheme.In.HEADER)
-                .type(SecurityScheme.Type.HTTP)
-                .scheme("Bearer");
-    }
 }
