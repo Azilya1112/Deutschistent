@@ -1,11 +1,14 @@
 package com.example.deutschistent.repositories;
 
-import com.example.deutschistent.entity.Document;
+import com.example.deutschistent.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface DocumentRepository extends JpaRepository<Document, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    Optional<User> findUserByEmailAndPassword(String email, String password);
 }
+

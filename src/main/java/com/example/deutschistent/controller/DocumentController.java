@@ -1,8 +1,10 @@
 package com.example.deutschistent.controller;
 
+
 import com.example.deutschistent.entity.Document;
 import com.example.deutschistent.service.DocumentService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.deutschistent.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,15 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/api/v1/documents")
 public class DocumentController {
 
     private final DocumentService documentService;
+    private final UserService userService;
 
-    @Autowired
-    public DocumentController(DocumentService documentService) {
-        this.documentService = documentService;
-    }
 
     @PostMapping("/save")
     public ResponseEntity<Document> saveDocument(@RequestBody Document document) {
@@ -50,6 +50,16 @@ public class DocumentController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/{userId}/documents/upload")
+    public ResponseEntity<String> uploadDocument(@PathVariable Long userId, @RequestParam("file") MultipartFile file) {
+        try {
+            userService.saveUserDocument(userId, file);
+            return ResponseEntity.ok("Document uploaded successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload document.");
         }
     }
 }
