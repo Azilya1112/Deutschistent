@@ -23,9 +23,14 @@ public class Document {
     Long id;
     String title;
     String uploaderName;
-    Long fileSize;
+//    Long fileSize;
     LocalDateTime uploadDate;
     Type type;
+    @Lob
+    @Column(name = "document_data")
+    private byte[] documentData;
+
+
 
 
 }
