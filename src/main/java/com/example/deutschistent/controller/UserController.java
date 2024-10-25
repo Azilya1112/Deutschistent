@@ -1,7 +1,12 @@
 package com.example.deutschistent.controller;
 
 
+import com.example.deutschistent.dto.request.SignInRequest;
+import com.example.deutschistent.dto.request.SignUpRequest;
+import com.example.deutschistent.dto.response.SignInResponse;
+import com.example.deutschistent.dto.response.SignUpResponse;
 import com.example.deutschistent.entity.User;
+import com.example.deutschistent.service.AuthenticationService;
 import com.example.deutschistent.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -14,12 +19,7 @@ import java.util.List;
 @RequestMapping("/api/v1/user")
 public class UserController {
     private final UserService userService;
-
-    @PostMapping("/save")
-    public User saveUser(@RequestBody User user) {
-
-        return userService.createUser(user);
-    }
+    private final AuthenticationService authenticationService;
 
     @PutMapping("/update/{id}")
     public User updateUser(@PathVariable long id){
@@ -35,5 +35,17 @@ public class UserController {
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
+
+    @PostMapping("/signIn")
+    public SignInResponse signIn(@RequestBody SignInRequest signInRequest) {
+        return authenticationService.signIn(signInRequest);
+    }
+
+    @PostMapping("/signUp")
+    public SignUpResponse signUp(@RequestBody SignUpRequest signUpRequest) {
+        return authenticationService.signUp(signUpRequest);
+    }
+
+
 
 }
