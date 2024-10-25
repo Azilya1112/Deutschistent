@@ -1,7 +1,6 @@
 package com.example.deutschistent.enums;
 
 public enum Type {
-    
     BUSINESS,
     LEGAL,
     ACADEMIC,
@@ -11,5 +10,4 @@ public enum Type {
     CREATIVE,
     DIGITAL,
     MEDICAL
-
 }

@@ -1,7 +1,6 @@
-package com.example.deutschistent.entity;
+package com.example.deutschistent.dto;
 
 import com.example.deutschistent.enums.Type;
-import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,14 +11,9 @@ import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
-@Table(name="documents")
-public class Document {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class DocumentDto {
     Long id;
     String title;
     String uploaderName;
