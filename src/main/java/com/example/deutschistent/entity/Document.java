@@ -26,4 +26,6 @@ public class Document {
     Long fileSize;
     LocalDateTime uploadDate;
     Type type;
+
+
 }
