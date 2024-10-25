@@ -17,8 +17,7 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                .components(new Components()
-                        .addSecuritySchemes(KEY_API, apiKeySecuritySchema()))
+                .components(new Components())
                 .info(new Info().title("Deutschistent"))
                 .security(Collections.singletonList(new SecurityRequirement().addList(KEY_API)));
     }
