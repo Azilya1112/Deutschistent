@@ -1,6 +1,5 @@
 package com.example.deutschistent.entity;
 
-
 import com.example.deutschistent.enums.Type;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -16,6 +15,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
+
 @Table(name="documents")
 public class Document {
     @Id
@@ -31,6 +31,5 @@ public class Document {
     private byte[] documentData;
 
 
-
-
 }
+
